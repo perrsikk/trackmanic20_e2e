@@ -1,0 +1,22 @@
+{
+  "name": "app_name",
+  "version": "tests_version",
+  "description": "description",
+  "main": "dev.conf.js",
+  "directories": {
+   "test": "test"
+  },
+  "dependencies": {
+    "bottlejs": "^1.2.1",
+    "faker": "^3.1.0",
+    "jasmine-spec-reporter": "^2.4.0",
+    "protractor": "^4.0.11",
+    "protractor-jasmine2-html-reporter": "0.0.6"
+  },
+  "scripts": {
+    "test": "protractor dev.conf.js",
+    "postinstall": "webdriver-manager update"
+  },
+  "author": "Ponorets Nikolay",
+  "license": "ISC"
+}
