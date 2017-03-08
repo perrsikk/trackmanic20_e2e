@@ -3,7 +3,7 @@ var signInPage            = pageObject.getSignInPage();
 var mainMenu              = pageObject.getMainMenu();
 var offerList             = pageObject.getOfferList();
 var signInData            = require('./../../data/sign_in/index');
-var newOfferData          = require('./../../data/offer_list/index');
+var newOfferData          = require('./../../data/offer/index');
 var offerCreate           = pageObject.getOfferCreate();
 var commonHelper          = require('./../../helpers/common.helper.js');
 
@@ -12,6 +12,8 @@ describe('Sign In', function () {
     var email = signInData.existingUser.email;
     var password = signInData.existingUser.password;
     var offerName = newOfferData.newOffer.newOfferName;
+    var offerOrg = newOfferData.newOffer.newOfferOrg;
+    var offerAcc = newOfferData.newOffer.newOfferAcc;
     var offerUrl = newOfferData.newOffer.newOfferUrl;
     var offerRedirectType = newOfferData.newOffer.newOfferRedirectType;
 
@@ -37,7 +39,7 @@ describe('Sign In', function () {
         });
 
         it('should see offers menu',function () {
-            // mainMenu.expandSideMenu();
+            mainMenu.expandSideMenu();
 
             commonHelper.waitUntilElementPresent(mainMenu.menuElement('Offers'));
             mainMenu.clickMenuItem('Offers');
@@ -58,9 +60,9 @@ describe('Sign In', function () {
         });
 
         it('should see created offer',function () {
-            offerCreate.fillOfferCreate(offerName, offerUrl, offerRedirectType);
+            offerCreate.createOffer(offerName, offerOrg, offerAcc, offerUrl, offerRedirectType);
 
-            commonHelper.waitUntilElementPresent(offerCreate.formTitle);
+            commonHelper.waitUntilElementPresent(offerList.btnNewOffer);
         });
     });
 });

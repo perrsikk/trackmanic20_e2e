@@ -4,6 +4,8 @@ module.exports = {
 
     newOffer: {
         newOfferName: 'testOffer',
+        newOfferOrg: 'org1',
+        newOfferAcc: 'John Smith',
         newOfferUrl: 'http://whatismyreferer.com',
         newOfferRedirectType: 'Server'
     }
