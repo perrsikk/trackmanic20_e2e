@@ -20,17 +20,12 @@ var OfferCreate = function () {
     //--------------------------------------------------------------------------
 
     this.createOffer = function (title, organization, account, url, redType) {
-        // var elm = element(by.css('button[type="submit"]'));
-        // var EC = protractor.ExpectedConditions;
-
         this.fillTitle(title);
         this.selectOrganization(organization);
         this.selectAccount(account);
         this.fillUrl(url);
         this.selectRedirectType(redType);
-        // browser.wait(EC.elementToBeClickable(elm),5000);
-        browser.executeScript('window.scrollTo(0,10000);');
-        this.clickCreate;
+        this.clickCreate();
     };
 
     this.fillTitle = function (title) {
@@ -44,22 +39,29 @@ var OfferCreate = function () {
     };
 
     this.selectOrganization = function (organization) {
-      this.selOrganization.click();
-      this.selectOption(organization);
+        this.selectInDropdown(this.selOrganization, organization);
     };
 
     this.selectAccount = function (account) {
-        this.selAccount.click();
-        this.selectOption(account);
+        this.selectInDropdown(this.selAccount, account);
     };
 
     this.selectRedirectType = function (redType) {
-        this.selRedirectType.click();
-        this.selectOption(redType);
+        this.selectInDropdown(this.selRedirectType, redType);
     };
 
     this.clickCreate = function () {
         this.btnCreate.click();
+    };
+
+    this.selectInDropdown = function (selector, option) {
+        this.dropDown(selector).click();
+        this.selectOption(option);
+    };
+
+    this.dropDown = function (selector) {
+        var element = selector;
+        return element;
     };
 
     this.selectOption = function (option) {
