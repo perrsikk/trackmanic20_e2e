@@ -11,7 +11,8 @@ exports.config = {
     framework: 'jasmine',
 
     suites: {
-        sign_in: ['./test/sign_in/sign_in.spec.js']
+        sign_in: ['./test/sign_in/sign_in.spec.js'],
+        offer_create: ['./test/offer_create/offer_create.spec.js']
     },
 
     allScriptsTimeout: 30000,

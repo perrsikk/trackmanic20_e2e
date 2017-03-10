@@ -67,6 +67,24 @@ var CommonHelper = function() {
     this.uniqueEmail = function () {
         return faker.internet.email();
     };
+
+    /**
+     * Interact with drop-downs
+     *
+     */
+    this.selectInDropdown = function (selector, option) {
+        this.dropDown(selector).click();
+        this.selectOption(option);
+    };
+
+    this.dropDown = function (selector) {
+        var element = selector;
+        return element;
+    };
+
+    this.selectOption = function (option) {
+        element(by.cssContainingText('.select2-results__options li', option)).click();
+    }
 };
 
 module.exports = new CommonHelper();

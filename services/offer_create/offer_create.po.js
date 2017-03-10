@@ -8,12 +8,12 @@ var OfferCreate = function () {
     //--------------------------------------------------------------------------
 
     this.formTitle       = element(by.cssContainingText('.container-title', 'New offer'));
-    this.txtOfferTitle   = element(by.id('title'));
-    this.selOrganization = element(by.css('ng-select[formcontrolname="organisation_id"]'));
-    this.selAccount      = element(by.css('ng-select[formcontrolname="affiliate_id"]'));
-    this.txtOfferUrl     = element(by.id('url'));
-    this.selRedirectType = element(by.id('redirectTypeManual'));
-    this.btnCreate       = element(by.css('.btn[type="submit"]'));
+    this.txtOfferTitle   = $('#title');
+    this.selOrganization = $('ng-select[formcontrolname="organisation_id"]');
+    this.selAccount      = $('ng-select[formcontrolname="affiliate_id"]');
+    this.txtOfferUrl     = $('#url');
+    this.selRedirectType = $('#redirectTypeManual');
+    this.btnCreate       = $('.btn[type="submit"]');
 
     //--------------------------------------------------------------------------
     // Functions
@@ -39,34 +39,20 @@ var OfferCreate = function () {
     };
 
     this.selectOrganization = function (organization) {
-        this.selectInDropdown(this.selOrganization, organization);
+        commonHelper.selectInDropdown(this.selOrganization, organization);
     };
 
     this.selectAccount = function (account) {
-        this.selectInDropdown(this.selAccount, account);
+        commonHelper.selectInDropdown(this.selAccount, account);
     };
 
     this.selectRedirectType = function (redType) {
-        this.selectInDropdown(this.selRedirectType, redType);
+        commonHelper.selectInDropdown(this.selRedirectType, redType);
     };
 
     this.clickCreate = function () {
         this.btnCreate.click();
     };
-
-    this.selectInDropdown = function (selector, option) {
-        this.dropDown(selector).click();
-        this.selectOption(option);
-    };
-
-    this.dropDown = function (selector) {
-        var element = selector;
-        return element;
-    };
-
-    this.selectOption = function (option) {
-        element(by.cssContainingText('.select2-results__options li', option)).click();
-    }
 };
 
 module.exports = OfferCreate;
