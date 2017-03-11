@@ -12,7 +12,9 @@ exports.config = {
 
     suites: {
         sign_in: ['./test/sign_in/sign_in.spec.js'],
-        offer_create: ['./test/offer_create/offer_create.spec.js']
+        offer_create: ['./test/offer_create/link_create.spec.js'],
+        ts_create: ['./test/ts_create/ts_create.spec.js'],
+        link_create: ['./test/link_create/link_create.spec.js']
     },
 
     allScriptsTimeout: 30000,

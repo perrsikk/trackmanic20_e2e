@@ -1,42 +1,40 @@
 var commonHelper = require('./../../helpers/common.helper.js');
 
 
-var OfferCreate = function () {
+var LinkCreate = function () {
 
     //--------------------------------------------------------------------------
     // Elements
     //--------------------------------------------------------------------------
 
-    this.formTitle       = element(by.cssContainingText('.container-title', 'New offer'));
-    this.txtOfferTitle   = $('#title');
+    this.formTitle       = element(by.cssContainingText('.container-title', 'New link'));
+    this.txtLinkTitle    = $('#title');
     this.selOrganization = $('ng-select[formcontrolname="organisation_id"]');
     this.selAccount      = $('ng-select[formcontrolname="affiliate_id"]');
-    this.txtOfferUrl     = $('#url');
-    this.selRedirectType = $('#redirectTypeManual');
+    this.txtLinkUrl      = $('#url');
     this.btnCreate       = $('.btn[type="submit"]');
 
     //--------------------------------------------------------------------------
     // Functions
     //--------------------------------------------------------------------------
 
-    this.createOffer = function (title, organization, account, url, redType) {
+    this.createLink = function (title, organization, account, url) {
         this.fillTitle(title);
         this.selectOrganization(organization);
         this.selectAccount(account);
         this.fillUrl(url);
-        this.selectRedirectType(redType);
         this.clickCreate();
     };
 
     this.fillTitle = function (title) {
-        var offerName = title+commonHelper.getRandomString(5);
-        this.txtOfferTitle.clear();
-        this.txtOfferTitle.sendKeys(offerName);
+        var linkName = title+commonHelper.getRandomString(5);
+        this.txtLinkTitle.clear();
+        this.txtLinkTitle.sendKeys(linkName);
     };
 
     this.fillUrl = function (url) {
-        this.txtOfferUrl.clear();
-        this.txtOfferUrl.sendKeys(url);
+        this.txtLinkUrl.clear();
+        this.txtLinkUrl.sendKeys(url);
     };
 
     this.selectOrganization = function (organization) {
@@ -47,13 +45,9 @@ var OfferCreate = function () {
         commonHelper.selectInDropdown(this.selAccount, account);
     };
 
-    this.selectRedirectType = function (redType) {
-        commonHelper.selectInDropdown(this.selRedirectType, redType);
-    };
-
     this.clickCreate = function () {
         this.btnCreate.click();
     };
 };
 
-module.exports = OfferCreate;
+module.exports = LinkCreate;

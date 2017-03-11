@@ -18,25 +18,33 @@ var MainMenu = function () {
       this.btnExpandMenu.click();
     };
 
-    this.clickSubMenuItem = function(itemName) {
-        this.subMenuElement(itemName).click();
+    this.clickSubMenuItem = function(name) {
+        this.subMenuElement(name).click();
     };
 
-    this.clickMenuItem = function(itemName) {
-        this.menuElement(itemName).click();
+    this.clickMenuItem = function(name) {
+        this.menuElement(name).click();
     };
 
-    this.menuElement = function(itemName) {
-        return element(by.cssContainingText('span', itemName))
+    this.expandingMenuItem = function(name) {
+        this.expandingMenuElement(name).click();
     };
 
-    this.subMenuElement = function(itemName) {
-        return element(by.cssContainingText('[routerlinkactive="active"]', itemName))
+    this.expandingMenuElement = function(name) {
+        return element(by.cssContainingText('span', name))
+    };
+
+    this.menuElement = function(name) {
+        return element(by.cssContainingText('button>span', name))
+    };
+
+    this.subMenuElement = function(name) {
+        return element(by.cssContainingText('[routerlinkactive="active"]', name))
     };
 
     this.itemName = function(menu_element) {
         var items = element.all($('[routerlinkactive="active"]')).filter(function(item) {
-            return item.element($('.item')).getText().then(function(_element) {
+            return item.element($('[routerlinkactive="active"]')).getText().then(function(_element) {
                 return _element === menu_element;
             });
         });

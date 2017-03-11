@@ -1,25 +1,25 @@
 var commonHelper = require('./../../helpers/common.helper.js');
 
-var OfferList = function () {
+var TrafficSourceList = function () {
 
     //--------------------------------------------------------------------------
     // Elements
     //--------------------------------------------------------------------------
 
-    this.btnNewOffer = element(by.buttonText('New offer'));
+    this.btnNewTrafficSource = $('.pull-right>button');
 
     //--------------------------------------------------------------------------
     // Functions
     //--------------------------------------------------------------------------
 
-    this.clickNewOffer = function () {
-        this.btnNewOffer.click();
+    this.clickNewTrafficSource = function () {
+        this.btnNewTrafficSource.click();
     };
     
-    this.offerItem = function (offerName) {
-        var offer = element(by.cssContainingText('.table-striped>tbody>tr>td', offerName));
-        return offer;
+    this.trafficSourceItem = function (trafficSourceName) {
+        var trafficSource = element(by.cssContainingText('.table-striped>tbody>tr>td', trafficSourceName));
+        return trafficSource;
     };
 };
 
-module.exports = OfferList;
+module.exports = TrafficSourceList;

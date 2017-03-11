@@ -84,7 +84,20 @@ var CommonHelper = function() {
 
     this.selectOption = function (option) {
         element(by.cssContainingText('.select2-results__options li', option)).click();
-    }
+    };
+
+    /**
+     * Usage: Generate random string.
+     * characterLength :  Length of string.
+     * Returns : Random string.
+     */
+    this.getRandomString = function (characterLength) {
+        var randomText = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        for (var i = 0; i < characterLength; i++)
+            randomText += possible.charAt(Math.floor(Math.random() * possible.length));
+        return randomText;
+    };
 };
 
 module.exports = new CommonHelper();

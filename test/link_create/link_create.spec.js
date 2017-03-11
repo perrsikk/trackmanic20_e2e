@@ -1,21 +1,20 @@
 var pageObject            = require('./../../services/pages').container.PageObject;
 var signInPage            = pageObject.getSignInPage();
 var mainMenu              = pageObject.getMainMenu();
-var offerList             = pageObject.getOfferList();
+var linkList              = pageObject.getLinkList();
 var signInData            = require('./../../data/sign_in/index');
-var newOfferData          = require('./../../data/offer/index');
-var offerCreate           = pageObject.getOfferCreate();
+var newLinkData           = require('./../../data/link/index');
+var linkCreate            = pageObject.getLinkCreate();
 var commonHelper          = require('./../../helpers/common.helper.js');
 
-describe('Offer Create', function () {
+describe('Link Create', function () {
 
     var email = signInData.existingUser.email;
     var password = signInData.existingUser.password;
-    var offerName = newOfferData.newOffer.newOfferName;
-    var offerOrg = newOfferData.newOffer.newOfferOrg;
-    var offerAcc = newOfferData.newOffer.newOfferAcc;
-    var offerUrl = newOfferData.newOffer.newOfferUrl;
-    var offerRedirectType = newOfferData.newOffer.newOfferRedirectType;
+    var linkName = newLinkData.newLink.newLinkName;
+    var linkOrg = newLinkData.newLink.newLinkOrg;
+    var linkAcc = newLinkData.newLink.newLinkAcc;
+    var linkUrl = newLinkData.newLink.newLinkUrl;
 
     describe('checking for login as existing user', function () {
 
@@ -38,32 +37,32 @@ describe('Offer Create', function () {
             commonHelper.waitUntilElementPresent(mainMenu.btnLogout);
         });
 
-        it('should see offers menu',function () {
+        it('should see link menu',function () {
             mainMenu.expandSideMenu();
 
             commonHelper.waitUntilElementPresent(mainMenu.expandingMenuElement('Offers'));
             mainMenu.expandingMenuItem('Offers');
 
-            commonHelper.waitUntilElementVisible(mainMenu.subMenuElement('Offers'));
+            commonHelper.waitUntilElementVisible(mainMenu.subMenuElement('Links'));
         });
 
-        it('should see offer list',function () {
-            mainMenu.clickSubMenuItem('Offers');
+        it('should see link list',function () {
+            mainMenu.clickSubMenuItem('Links');
 
-            commonHelper.waitUntilElementPresent(offerList.btnNewOffer);
+            commonHelper.waitUntilElementPresent(linkList.btnNewLink);
         });
 
-        it('should see offer creation form',function () {
-            offerList.clickNewOffer();
+        it('should see link creation form',function () {
+            linkList.clickNewLink();
 
-            commonHelper.waitUntilElementPresent(offerCreate.formTitle);
+            commonHelper.waitUntilElementPresent(linkCreate.formTitle);
         });
 
-        it('should see created offer',function () {
-            offerCreate.createOffer(offerName, offerOrg, offerAcc, offerUrl, offerRedirectType);
+        it('should see created link',function () {
+            linkCreate.createLink(linkName, linkOrg, linkAcc, linkUrl);
 
-            commonHelper.waitUntilElementPresent(offerList.btnNewOffer);
-            commonHelper.waitUntilElementPresent(offerList.offerItem(offerName));
+            commonHelper.waitUntilElementPresent(linkList.btnNewLink);
+            commonHelper.waitUntilElementPresent(linkList.linkItem(linkName));
         });
     });
 });
