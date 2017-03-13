@@ -40,6 +40,16 @@ bottlejs.factory('PageObject', function () {
         getLinkCreate: function () {
             var linkCreate = require('./link_create/link_create.po.js');
             return new linkCreate();
+        },
+
+        getConditionList: function () {
+            var conditionList = require('./condition_list/condition_list.po.js');
+            return new conditionList();
+        },
+
+        getConditionCreate: function () {
+            var conditionCreate = require('./condition_create/condition_create.po.js');
+            return new conditionCreate();
         }
     }
 });
